@@ -18,13 +18,15 @@ class Solution(object):
                 arr.extend(nums1)
                 break
 
-            p = nums1.pop(0)
-            q = nums2.pop(0)
+            p = nums1[0]
+            q = nums2[0]
 
             if p < q:
                 arr.append(p)
+                nums1 = nums1[1:]
             else:
                 arr.append(q)
+                nums2 = nums2[1:]
 
         # now arr has all sorted data
         arr_len = len(arr)
@@ -34,7 +36,7 @@ class Solution(object):
             median = arr[arr_len / 2] * 1.0
         return median
 
+
 if __name__ == "__main__":
-    print Solution().findMedianSortedArrays([1, 3, 5, 7], [2, 4, 6])
-    print Solution().findMedianSortedArrays([1, 3, 5], [2, 4, 6])
+    print Solution().findMedianSortedArrays([1, 2], [3, 4])
 
