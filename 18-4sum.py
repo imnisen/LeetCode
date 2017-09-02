@@ -27,7 +27,7 @@ class Solution(object):
         nums.sort()
         for i in range(0, l - 3):
             # 去除重复计算
-            if nums[i + 1] == nums[i] and i+1 < l-3:
+            if i != 0 and nums[i] == nums[i-1] and i+1 < l-3:
                 continue
             r = self.threeSum(nums[i + 1:], target - nums[i])
             for each in r:
@@ -45,7 +45,7 @@ class Solution(object):
         l = len(nums)
         r = []
         for i in range(0, l - 2):
-            if (i == 0 or (i > 0 and nums[i] != nums[i - 1])) and nums[i] <= 0:
+            if i == 0 or (i > 0 and nums[i] != nums[i - 1]):
                 j = i + 1
                 k = l - 1
                 sum = target - nums[i]
@@ -95,6 +95,10 @@ class Solution(object):
         # return return_list
 
 
-s = [1, 0, -1, 0, -2, 2]
-t = 0
+# s = [-1, 0, 1, 2, -1, -4]
+# t = -1
+# print Solution().fourSum(s, t)
+
+s = [5,5,3,5,1,-5,1,-2]
+t = 4
 print Solution().fourSum(s, t)
